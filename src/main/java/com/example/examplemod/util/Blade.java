@@ -6,8 +6,8 @@ public class Blade {
     private String name;
     private Integer maxDamage;
     private Float baseAttackModifier;
-    private String textureName;
-    private String modelName;
+    private String texture;
+    private String model;
     private Integer specialAttackType;
     private Integer standbyRenderType;
     private List<EnchantmentEffect> enchantmentEffects;
@@ -38,20 +38,20 @@ public class Blade {
         this.baseAttackModifier = baseAttackModifier;
     }
 
-    public String getTextureName() {
-        return textureName;
+    public String getTexture() {
+        return texture;
     }
 
-    public void setTextureName(String textureName) {
-        this.textureName = textureName;
+    public void setTexture(String texture) {
+        this.texture = texture;
     }
 
-    public String getModelName() {
-        return modelName;
+    public String getModel() {
+        return model;
     }
 
-    public void setModelName(String modelName) {
-        this.modelName = modelName;
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public Integer getSpecialAttackType() {
@@ -68,5 +68,13 @@ public class Blade {
 
     public void setStandbyRenderType(Integer standbyRenderType) {
         this.standbyRenderType = standbyRenderType;
+    }
+
+    public List<EnchantmentEffect> getEnchantmentEffects() {
+        return enchantmentEffects;
+    }
+
+    public void setEnchantmentEffects(List<EnchantmentEffect> enchantmentEffects) {
+        this.enchantmentEffects = enchantmentEffects;
     }
 }

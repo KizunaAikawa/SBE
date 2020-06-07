@@ -1,28 +1,28 @@
 package com.example.examplemod.util;
 
-import net.minecraft.init.Enchantments;
+import net.minecraft.enchantment.Enchantment;
 
 public class EnchantmentEffect {
-    private Enchantments enchantmentType;
+    private Enchantment enchantmentType;
     private int level = 1;
 
-    public EnchantmentEffect(Enchantments enchantmentType, int level) {
+    public EnchantmentEffect(Enchantment enchantmentType, int level) {
         this.enchantmentType = enchantmentType;
         this.level = level;
     }
 
-    public EnchantmentEffect(Enchantments enchantmentType) {
+    public EnchantmentEffect(Enchantment enchantmentType) {
         this.enchantmentType = enchantmentType;
     }
 
     public EnchantmentEffect() {
     }
 
-    public Enchantments getEnchantmentType() {
+    public Enchantment getEnchantmentType() {
         return enchantmentType;
     }
 
-    public void setEnchantmentType(Enchantments enchantmentType) {
+    public void setEnchantmentType(Enchantment enchantmentType) {
         this.enchantmentType = enchantmentType;
     }
 
