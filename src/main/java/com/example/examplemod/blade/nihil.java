@@ -20,8 +20,8 @@ public class nihil {
     public static final String namecc = "flammpfeil.slashblade.named.crimsoncherry";
 
     @SubscribeEvent
-    public void initnl(LoadEvent.InitEvent event){
-        ItemStack customblade = new ItemStack(SlashBlade.bladeNamed,1,0);
+    public void initnl(LoadEvent.InitEvent event) {
+        ItemStack customblade = new ItemStack(SlashBlade.bladeNamed, 1, 0);
         NBTTagCompound tag = new NBTTagCompound();
         customblade.setTagCompound(tag);
         customblade.addEnchantment(Enchantments.UNBREAKING, 3);
@@ -39,9 +39,10 @@ public class nihil {
         SlashBlade.registerCustomItemStack(namenl, customblade);
         ItemSlashBladeNamed.NamedBlades.add(namenl);
     }
+
     @SubscribeEvent
-    public void initex(LoadEvent.InitEvent event){
-        ItemStack customblade = new ItemStack(SlashBlade.bladeNamed,1,0);
+    public void initex(LoadEvent.InitEvent event) {
+        ItemStack customblade = new ItemStack(SlashBlade.bladeNamed, 1, 0);
         NBTTagCompound tag = new NBTTagCompound();
         customblade.setTagCompound(tag);
         customblade.addEnchantment(Enchantments.UNBREAKING, 2);
@@ -61,9 +62,10 @@ public class nihil {
         SlashBlade.registerCustomItemStack(nameex, customblade);
         ItemSlashBladeNamed.NamedBlades.add(nameex);
     }
+
     @SubscribeEvent
-    public void initul(LoadEvent.InitEvent event){
-        ItemStack customblade = new ItemStack(SlashBlade.bladeNamed,1,0);
+    public void initul(LoadEvent.InitEvent event) {
+        ItemStack customblade = new ItemStack(SlashBlade.bladeNamed, 1, 0);
         NBTTagCompound tag = new NBTTagCompound();
         customblade.setTagCompound(tag);
         customblade.addEnchantment(Enchantments.UNBREAKING, 3);
@@ -85,8 +87,8 @@ public class nihil {
     }
 
     @SubscribeEvent
-    public void initcc(LoadEvent.InitEvent event){
-        ItemStack customblade = new ItemStack(SlashBlade.bladeNamed,1,0);
+    public void initcc(LoadEvent.InitEvent event) {
+        ItemStack customblade = new ItemStack(SlashBlade.bladeNamed, 1, 0);
         NBTTagCompound tag = new NBTTagCompound();
         customblade.setTagCompound(tag);
         customblade.addEnchantment(Enchantments.SHARPNESS, 5);
@@ -106,8 +108,8 @@ public class nihil {
     }
 
     @SubscribeEvent
-    public void initbx(LoadEvent.InitEvent event){
-        ItemStack customblade = new ItemStack(SlashBlade.bladeNamed,1,0);
+    public void initbx(LoadEvent.InitEvent event) {
+        ItemStack customblade = new ItemStack(SlashBlade.bladeNamed, 1, 0);
         NBTTagCompound tag = new NBTTagCompound();
         customblade.setTagCompound(tag);
         customblade.addEnchantment(Enchantments.UNBREAKING, 3);
@@ -126,8 +128,9 @@ public class nihil {
         SlashBlade.registerCustomItemStack(namebx, customblade);
         ItemSlashBladeNamed.NamedBlades.add(namebx);
     }
+
     @SubscribeEvent
-    public void initRecipes(LoadEvent.PostInitEvent event){
+    public void initRecipes(LoadEvent.PostInitEvent event) {
         ItemStack nihil = SlashBlade.getCustomBlade(namenl);
         ItemStack nihilex = SlashBlade.getCustomBlade(nameex);
         ItemStack nihilul = SlashBlade.getCustomBlade(nameul);
@@ -135,13 +138,13 @@ public class nihil {
         ItemStack nihilbx = SlashBlade.getCustomBlade(namebx);
         ItemStack sphere = SlashBlade.findItemStack("flammpfeil.slashblade", "sphere_bladesoul", 1);
         ItemStack ingot = SlashBlade.findItemStack("flammpfeil.slashblade", "ingot_bladesoul", 1);
-        ItemStack reqblade_nl=new ItemStack(SlashBlade.weapon);
+        ItemStack reqblade_nl = new ItemStack(SlashBlade.weapon);
         reqblade_nl.setItemDamage(Short.MAX_VALUE);
-        SlashBlade.addRecipe(namenl, new RecipeAwakeBlade(new ResourceLocation("flammpfeil.slashblade",namenl), nihil, reqblade_nl
+        SlashBlade.addRecipe(namenl, new RecipeAwakeBlade(new ResourceLocation("flammpfeil.slashblade", namenl), nihil, reqblade_nl
                 , new Object[]{
-                "SIS","IBI","SIS",'I',ingot,'S',sphere,'B',reqblade_nl
+                "SIS", "IBI", "SIS", 'I', ingot, 'S', sphere, 'B', reqblade_nl
         }));
-        ItemStack reqblade_ex=SlashBlade.getCustomBlade(namenl);
+        ItemStack reqblade_ex = SlashBlade.getCustomBlade(namenl);
         NBTTagCompound tag_ex = ItemSlashBlade.getItemTagCompound(reqblade_ex);
         ItemSlashBlade.RepairCount.set(tag_ex, Integer.valueOf(1));
         ItemSlashBlade.KillCount.set(tag_ex, Integer.valueOf(1000));
@@ -149,11 +152,9 @@ public class nihil {
         if (tag_ex.hasKey("ench")) {
             tag_ex.removeTag("ench");
         }
-        SlashBlade.addRecipe(nameex, new RecipeAwakeBlade(new ResourceLocation("flammpfeil.slashblade",nameex), nihilex, reqblade_ex
-                , new Object[]{
-                "SNS","IBI","SDS", 'S', sphere, 'I', ingot, 'B', reqblade_ex, 'N', Items.NETHER_STAR, 'D', "blockDiamond"
-        }));
-        ItemStack reqblade_ul=SlashBlade.getCustomBlade(nameex);
+        SlashBlade.addRecipe(nameex, new RecipeAwakeBlade(new ResourceLocation("flammpfeil.slashblade", nameex), nihilex, reqblade_ex
+                , "SNS", "IBI", "SDS", 'S', sphere, 'I', ingot, 'B', reqblade_ex, 'N', Items.NETHER_STAR, 'D', "blockDiamond"));
+        ItemStack reqblade_ul = SlashBlade.getCustomBlade(nameex);
         NBTTagCompound tag_ul = ItemSlashBlade.getItemTagCompound(reqblade_ul);
         ItemStack yamato = SlashBlade.getCustomBlade("flammpfeil.slashblade.named.yamato");
         ItemSlashBlade.RepairCount.set(tag_ul, Integer.valueOf(3));
@@ -162,11 +163,11 @@ public class nihil {
         if (tag_ul.hasKey("ench")) {
             tag_ul.removeTag("ench");
         }
-        SlashBlade.addRecipe(nameul,new RecipeNihil( new ResourceLocation("flammpfeil.slashblade",nameul), nihilul, reqblade_ul, 1, 1, yamato, 1, 2, true,
+        SlashBlade.addRecipe(nameul, new RecipeNihil(new ResourceLocation("flammpfeil.slashblade", nameul), nihilul, reqblade_ul, 1, 1, yamato, 1, 2, true,
                 new Object[]{
                         "SNS", "DBD", "SYS", 'S', SlashBlade.weapon, 'Y', yamato, 'B', reqblade_ul, 'N', Items.NETHER_STAR, 'D', "blockDiamond"
                 }));
-        ItemStack reqblade_cc=SlashBlade.getCustomBlade(nameex);
+        ItemStack reqblade_cc = SlashBlade.getCustomBlade(nameex);
         NBTTagCompound tag_cc = ItemSlashBlade.getItemTagCompound(reqblade_cc);
         ItemSlashBlade.RepairCount.set(tag_cc, Integer.valueOf(3));
         ItemSlashBlade.KillCount.set(tag_cc, Integer.valueOf(3000));
@@ -174,12 +175,12 @@ public class nihil {
         if (tag_cc.hasKey("ench")) {
             tag_cc.removeTag("ench");
         }
-        SlashBlade.addRecipe(namecc,new RecipeNihil( new ResourceLocation("flammpfeil.slashblade",namecc), nihilcc, reqblade_cc, 1, 1, nihil, 1, 0, false,
+        SlashBlade.addRecipe(namecc, new RecipeNihil(new ResourceLocation("flammpfeil.slashblade", namecc), nihilcc, reqblade_cc, 1, 1, nihil, 1, 0, false,
                 new Object[]{
                         "DSD", "DMD", "DDD", 'S', nihil, 'M', reqblade_cc, 'D', "blockDiamond"
                 }));
 
-        SlashBlade.addRecipe(namebx,new RecipeNihil( new ResourceLocation("flammpfeil.slashblade",namebx), nihilbx, nihilul, 0, 1, nihilcc, 2, 1, false,
+        SlashBlade.addRecipe(namebx, new RecipeNihil(new ResourceLocation("flammpfeil.slashblade", namebx), nihilbx, nihilul, 0, 1, nihilcc, 2, 1, false,
                 new Object[]{
                         "DDD",
                         "ACB",
