@@ -1,4 +1,4 @@
-package com.example.examplemod.util;
+package com.example.examplemod;
 
 import java.util.List;
 
@@ -11,8 +11,23 @@ public class Blade {
     private Integer specialAttackType;
     private Integer standbyRenderType;
     private List<EnchantmentEffect> enchantmentEffects;
+    private Boolean isDefaultBewitched;
+    private Recipe recipe;
 
+    public Blade(String name, Integer maxDamage, Float baseAttackModifier, String texture, String model, Integer specialAttackType, Integer standbyRenderType, List<EnchantmentEffect> enchantmentEffects, Boolean isDefaultBewitched) {
+        this.name = name;
+        this.maxDamage = maxDamage;
+        this.baseAttackModifier = baseAttackModifier;
+        this.texture = texture;
+        this.model = model;
+        this.specialAttackType = specialAttackType;
+        this.standbyRenderType = standbyRenderType;
+        this.enchantmentEffects = enchantmentEffects;
+        this.isDefaultBewitched = isDefaultBewitched;
+    }
 
+    public Blade() {
+    }
 
     public String getName() {
         return name;
@@ -76,5 +91,21 @@ public class Blade {
 
     public void setEnchantmentEffects(List<EnchantmentEffect> enchantmentEffects) {
         this.enchantmentEffects = enchantmentEffects;
+    }
+
+    public Boolean getDefaultBewitched() {
+        return isDefaultBewitched;
+    }
+
+    public void setDefaultBewitched(Boolean defaultBewitched) {
+        isDefaultBewitched = defaultBewitched;
+    }
+
+    public Recipe getRecipe() {
+        return recipe;
+    }
+
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
     }
 }

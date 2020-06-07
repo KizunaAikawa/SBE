@@ -1,4 +1,4 @@
-package com.example.examplemod.util;
+package com.example.examplemod;
 
 import net.minecraft.enchantment.Enchantment;
 

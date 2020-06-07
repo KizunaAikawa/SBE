@@ -1,4 +1,4 @@
-package com.example.examplemod.util;
+package com.example.examplemod;
 
 public class RecipePos {
     private int posX = 0;

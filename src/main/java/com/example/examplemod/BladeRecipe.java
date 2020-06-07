@@ -1,4 +1,4 @@
-package com.example.examplemod.util;
+package com.example.examplemod;
 
 import mods.flammpfeil.slashblade.ItemSlashBladeNamed;
 import mods.flammpfeil.slashblade.SlashBlade;
@@ -16,9 +16,9 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 import java.util.Map;
 import java.util.Set;
 
-public class Recipe extends ShapedOreRecipe {
+public class BladeRecipe extends ShapedOreRecipe {
     private Map<ItemStack, RecipePos> requiredStatefulBlades;
-    private ItemStack mainBlade;
+    private ItemStack requiredMainBlade;
 
     private int tagValueCompare(TagPropertyAccessor<Integer> targetTag, NBTTagCompound reqTag, NBTTagCompound srcTag) {
         return targetTag.get(reqTag).compareTo(targetTag.get(srcTag));
@@ -28,9 +28,9 @@ public class Recipe extends ShapedOreRecipe {
         return !item.isEmpty() && item.getItem() instanceof ItemSlashBlade && item.hasTagCompound();
     }
 
-    public Recipe(ResourceLocation group, ItemStack result, ItemStack mainBlade, Map<ItemStack, RecipePos> requiredStatefulBlades, Object... recipe) {
+    public BladeRecipe(ResourceLocation group, ItemStack result, ItemStack requiredMainBlade, Map<ItemStack, RecipePos> requiredStatefulBlades, Object... recipe) {
         super(group, result, recipe);
-        this.mainBlade = mainBlade;
+        this.requiredMainBlade = requiredMainBlade;
         this.requiredStatefulBlades = requiredStatefulBlades;
     }
 
@@ -75,7 +75,7 @@ public class Recipe extends ShapedOreRecipe {
 
     public ItemStack getCraftingResult(InventoryCrafting var1) {
         ItemStack newBlade = super.getCraftingResult(var1);
-        RecipePos mainBladePos = requiredStatefulBlades.get(mainBlade);
+        RecipePos mainBladePos = requiredStatefulBlades.get(requiredMainBlade);
         ItemStack srcBlade = var1.getStackInRowAndColumn(mainBladePos.getX(), mainBladePos.getY());
         if (isValidBlade(srcBlade)) {
             NBTTagCompound oldTag = srcBlade.getTagCompound();
