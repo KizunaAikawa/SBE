@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package com.example.SBE;
 
 import mods.flammpfeil.slashblade.ItemSlashBlade;
 import mods.flammpfeil.slashblade.ItemSlashBladeNamed;

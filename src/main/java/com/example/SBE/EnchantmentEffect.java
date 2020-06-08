@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package com.example.SBE;
 
 import net.minecraft.enchantment.Enchantment;
 

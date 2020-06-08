@@ -1,4 +1,4 @@
-package com.example.examplemod.blade;
+package com.example.SBE.blade;
 
 import mods.flammpfeil.slashblade.ItemSlashBladeNamed;
 import mods.flammpfeil.slashblade.RecipeAwakeBlade;
