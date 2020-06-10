@@ -16,7 +16,6 @@ public class BladeRegister {
 
     @SubscribeEvent
     public void register(LoadEvent.InitEvent event) {
-        //刀属性设置
         Blade nihil = new Blade();
         nihil.setName("flammpfeil.slashblade.named.nihil");
         nihil.setMaxDamage(45);
@@ -26,19 +25,17 @@ public class BladeRegister {
         nihil.setModel("nihil/nihil");
         nihil.setSpecialAttackType(2);
         nihil.setStandbyRenderType(1);
-        //刀的注册
         createBlade(nihil);
     }
 
     @SubscribeEvent
     public void recipeRegister(LoadEvent.PostInitEvent event) {
-        //刀合成表设置
         Blade nihil = new Blade();
         nihil.setName("flammpfeil.slashblade.named.nihil");
         Recipe recipe = new Recipe();
-        ItemStack sphere = SlashBlade.findItemStack("flammpfeil.slashblade", "sphere_bladesoul", 1); //耀魂宝珠
-        ItemStack ingot = SlashBlade.findItemStack("flammpfeil.slashblade", "ingot_bladesoul", 1); //耀魂铁锭
-        ItemStack previousBlade = new ItemStack(SlashBlade.weapon); //大太刀
+        ItemStack sphere = SlashBlade.findItemStack("flammpfeil.slashblade", "sphere_bladesoul", 1);
+        ItemStack ingot = SlashBlade.findItemStack("flammpfeil.slashblade", "ingot_bladesoul", 1);
+        ItemStack previousBlade = new ItemStack(SlashBlade.weapon);
         Map<Character, ItemStack> nihiItemMap = new HashMap<>();
         nihiItemMap.put('S', sphere);
         nihiItemMap.put('I', ingot);
@@ -48,7 +45,6 @@ public class BladeRegister {
         recipe.setShare(share);
         recipe.setPreviousBlade(previousBlade);
         nihil.setRecipe(recipe);
-        //刀合成表注册
         createBladeRecipe(nihil);
     }
 

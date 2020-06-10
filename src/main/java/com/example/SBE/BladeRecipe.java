@@ -43,7 +43,6 @@ public class BladeRecipe extends ShapedOreRecipe {
                 RecipePos pos = requiredStatefulBlades.get(reqBlade);
                 ItemStack srcBlade = inv.getStackInRowAndColumn(pos.getX(), pos.getY());
                 if (isValidBlade(srcBlade)) {
-                    //附魔检查
                     Set<Map.Entry<Enchantment, Integer>> oldEnchantments = EnchantmentHelper.getEnchantments(reqBlade).entrySet();
                     for (Map.Entry<Enchantment, Integer> enchantmentEffect : oldEnchantments) {
                         int level = EnchantmentHelper.getEnchantmentLevel(enchantmentEffect.getKey(), srcBlade);
@@ -51,7 +50,6 @@ public class BladeRecipe extends ShapedOreRecipe {
                             return false;
                         }
                     }
-                    //NBTTags检查
                     if (!srcBlade.getUnlocalizedName().equals(reqBlade.getUnlocalizedName())) {
                         return false;
                     }
