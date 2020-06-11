@@ -93,7 +93,7 @@ public class Blade {
         this.enchantmentEffects = enchantmentEffects;
     }
 
-    public Boolean getDefaultBewitched() {
+    public Boolean isDefaultBewitched() {
         return isDefaultBewitched;
     }
 
