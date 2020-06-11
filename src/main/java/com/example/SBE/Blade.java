@@ -3,7 +3,7 @@ package com.example.SBE;
 import java.util.List;
 
 public class Blade {
-    private String name;
+    private String name = "flammpfeil.slashblade.named.";
     private Integer maxDamage;
     private Float baseAttackModifier;
     private String texture;
@@ -15,7 +15,7 @@ public class Blade {
     private Recipe recipe;
 
     public Blade(String name, Integer maxDamage, Float baseAttackModifier, String texture, String model, Integer specialAttackType, Integer standbyRenderType, List<EnchantmentEffect> enchantmentEffects, Boolean isDefaultBewitched) {
-        this.name = name;
+        this.name += name;
         this.maxDamage = maxDamage;
         this.baseAttackModifier = baseAttackModifier;
         this.texture = texture;
@@ -34,7 +34,7 @@ public class Blade {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name += name;
     }
 
     public Integer getMaxDamage() {

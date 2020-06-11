@@ -18,6 +18,7 @@ public class SBE {
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         SlashBlade.InitEventBus.register(new BladeRegister());
+        SlashBlade.InitEventBus.post(new ScanBladeEvent());
     }
 
     @EventHandler

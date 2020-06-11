@@ -1,10 +1,10 @@
 package com.example.SBE;
 
+import com.example.SBE.blade.Nihil;
 import mods.flammpfeil.slashblade.ItemSlashBladeNamed;
 import mods.flammpfeil.slashblade.SlashBlade;
 import mods.flammpfeil.slashblade.item.ItemSlashBlade;
 import mods.flammpfeil.slashblade.named.event.LoadEvent;
-import net.minecraft.init.Enchantments;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
@@ -14,44 +14,21 @@ import java.util.*;
 
 
 public class BladeRegister {
+    private static List<Blade> bladeList = new ArrayList<>();
+
+    @SubscribeEvent
+    public void initBladeList(ScanBladeEvent event) {
+        bladeList.add(new Nihil());
+    }
 
     @SubscribeEvent
     public void register(LoadEvent.InitEvent event) {
-        Blade nihil = new Blade();
-        nihil.setName("flammpfeil.slashblade.named.nihil");
-        nihil.setMaxDamage(45);
-        nihil.setDefaultBewitched(true);
-        nihil.setBaseAttackModifier(10.0F);
-        nihil.setTexture("nihil/nihil");
-        nihil.setModel("nihil/nihil");
-        nihil.setSpecialAttackType(2);
-        nihil.setStandbyRenderType(1);
-        List<EnchantmentEffect> enchantmentEffects = new ArrayList<>();
-        enchantmentEffects.add(new EnchantmentEffect(Enchantments.UNBREAKING, 10));
-        enchantmentEffects.add(new EnchantmentEffect(Enchantments.SHARPNESS, 10));
-        nihil.setEnchantmentEffects(enchantmentEffects);
-        nihil.setDefaultBewitched(true);
-        createBlade(nihil);
+        bladeList.forEach(BladeRegister::createBlade);
     }
 
     @SubscribeEvent
     public void recipeRegister(LoadEvent.PostInitEvent event) {
-        Blade nihil = new Blade();
-        nihil.setName("flammpfeil.slashblade.named.nihil");
-        Recipe recipe = new Recipe();
-        ItemStack sphere = SlashBlade.findItemStack("flammpfeil.slashblade", "sphere_bladesoul", 1);
-        ItemStack ingot = SlashBlade.findItemStack("flammpfeil.slashblade", "ingot_bladesoul", 1);
-        ItemStack previousBlade = new ItemStack(SlashBlade.weapon);
-        Map<Character, ItemStack> nihiItemMap = new HashMap<>();
-        nihiItemMap.put('S', sphere);
-        nihiItemMap.put('I', ingot);
-        nihiItemMap.put('B', previousBlade);
-        String[] share = {"SIS", "IBI", "SIS"};
-        recipe.setItemMap(nihiItemMap);
-        recipe.setShare(share);
-        recipe.setPreviousBlade(previousBlade);
-        nihil.setRecipe(recipe);
-        createBladeRecipe(nihil);
+        bladeList.forEach(BladeRegister::createBladeRecipe);
     }
 
     public static void createBlade(Blade blade) {

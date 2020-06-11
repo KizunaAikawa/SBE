@@ -2,13 +2,22 @@ package com.example.SBE;
 
 import net.minecraft.item.ItemStack;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Recipe {
-    Map<Character, ItemStack> itemMap;
-    String[] share;
-    ItemStack previousBlade;
+    protected Map<Character, ItemStack> itemMap = new HashMap<>();
+    protected String[] share = {};
+    protected ItemStack previousBlade = ItemStack.EMPTY;
 
+    public Recipe() {
+    }
+
+    public Recipe(Map<Character, ItemStack> itemMap, String[] share, ItemStack previousBlade) {
+        this.itemMap = itemMap;
+        this.share = share;
+        this.previousBlade = previousBlade;
+    }
 
     public Map<Character, ItemStack> getItemMap() {
         return itemMap;
