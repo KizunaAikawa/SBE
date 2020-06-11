@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package com.example.SBE;
 
 import java.util.List;
 
@@ -93,7 +93,7 @@ public class Blade {
         this.enchantmentEffects = enchantmentEffects;
     }
 
-    public Boolean getDefaultBewitched() {
+    public Boolean isDefaultBewitched() {
         return isDefaultBewitched;
     }
 
