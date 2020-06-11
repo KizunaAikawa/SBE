@@ -11,7 +11,7 @@
   "credits": "",
   "logoFile": "",
   "screenshots": [],
-  "requiredMods": [MinecraftForge],
-  "dependencies": ["flammpfeil.slashblade"]
+  "requiredMods": ["MinecraftForge","SlashBlade-mc1.12-r32"],
+  "dependencies": []
 }
 ]

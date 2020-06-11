@@ -22,8 +22,8 @@ public class BladeRegister {
         nihil.setMaxDamage(45);
         nihil.setDefaultBewitched(true);
         nihil.setBaseAttackModifier(10.0F);
-        nihil.setTexture("named/sange/white");
-        nihil.setModel("named/sange/white");
+        nihil.setTexture("nihil/nihil");
+        nihil.setModel("nihil/nihil");
         nihil.setSpecialAttackType(2);
         nihil.setStandbyRenderType(1);
         List<EnchantmentEffect> enchantmentEffects = new ArrayList<>();
