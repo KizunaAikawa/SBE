@@ -1,8 +1,8 @@
 [
 {
-  "modid": "slash_blade_extension",
+  "modid": "test",
   "name": "SlashBladeExtension",
-  "description": "Example placeholder mod.",
+  "description": "",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",

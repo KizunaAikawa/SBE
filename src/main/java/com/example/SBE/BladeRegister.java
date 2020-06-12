@@ -1,6 +1,11 @@
 package com.example.SBE;
 
-import com.example.SBE.blade.Nihil;
+import com.example.SBE.blade.nihil.AkaSakura;
+import com.example.SBE.blade.nihil.Nihil;
+import com.example.SBE.blade.nihil.NihilBx;
+import com.example.SBE.recipe.AkaSakuraRecipe;
+import com.example.SBE.recipe.NihilBxRecipe;
+import com.example.SBE.recipe.NihilRecipe;
 import mods.flammpfeil.slashblade.ItemSlashBladeNamed;
 import mods.flammpfeil.slashblade.SlashBlade;
 import mods.flammpfeil.slashblade.item.ItemSlashBlade;
@@ -14,24 +19,34 @@ import java.util.*;
 
 
 public class BladeRegister {
-    private static List<Blade> bladeList = new ArrayList<>();
+    private static List<Blade> bladeList = new LinkedList<>();
+    private static List<Recipe> bladeRecipeList = new LinkedList<>();
 
     @SubscribeEvent
-    public void initBladeList(ScanBladeEvent event) {
+    public void initBlade(LoadEvent.InitEvent event) {
         bladeList.add(new Nihil());
+        bladeList.add(new NihilBx());
+        bladeList.add(new AkaSakura());
+        registerBlades();
     }
 
     @SubscribeEvent
-    public void register(LoadEvent.InitEvent event) {
+    public void initBladeRecipe(LoadEvent.PostInitEvent event) {
+        bladeRecipeList.add(new NihilRecipe());
+        bladeRecipeList.add(new NihilBxRecipe());
+        bladeRecipeList.add(new AkaSakuraRecipe());
+        registerBladeRecipes();
+    }
+
+    private void registerBlades() {
         bladeList.forEach(BladeRegister::createBlade);
     }
 
-    @SubscribeEvent
-    public void recipeRegister(LoadEvent.PostInitEvent event) {
-        bladeList.forEach(BladeRegister::createBladeRecipe);
+    private void registerBladeRecipes() {
+        bladeRecipeList.forEach(BladeRegister::createBladeRecipe);
     }
 
-    public static void createBlade(Blade blade) {
+    private static void createBlade(Blade blade) {
         ItemStack customBlade = new ItemStack(SlashBlade.bladeNamed, 1, 0);
         NBTTagCompound tag = new NBTTagCompound();
         customBlade.setTagCompound(tag);
@@ -50,9 +65,8 @@ public class BladeRegister {
         ItemSlashBladeNamed.NamedBlades.add(blade.getName());
     }
 
-    public static void createBladeRecipe(Blade blade) {
-        Recipe recipe = blade.getRecipe();
-        ItemStack newBlade = SlashBlade.getCustomBlade(blade.getName());
+    private static void createBladeRecipe(Recipe recipe) {
+        ItemStack newBlade = recipe.getNewBlade();
         ItemStack reqMainBlade = recipe.getPreviousBlade();
         String[] share = recipe.getShare();
         Map<ItemStack, RecipePos> requiredStatefulBlades = new HashMap<>();
@@ -69,6 +83,6 @@ public class BladeRegister {
             recipeParameters.add(itemEntry.getKey());
             recipeParameters.add(itemEntry.getValue());
         });
-        SlashBlade.addRecipe(blade.getName(), new BladeRecipe(new ResourceLocation("flammpfeil.slashblade", blade.getName()), newBlade, reqMainBlade, requiredStatefulBlades, recipeParameters.toArray()));
+        SlashBlade.addRecipe(newBlade.getUnlocalizedName(), new BladeRecipe(new ResourceLocation("flammpfeil.slashblade", newBlade.getUnlocalizedName()), newBlade, reqMainBlade, requiredStatefulBlades, recipeParameters.toArray()));
     }
 }

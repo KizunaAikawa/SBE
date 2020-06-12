@@ -8,6 +8,7 @@ import java.util.Map;
 public class Recipe {
     protected Map<Character, ItemStack> itemMap = new HashMap<>();
     protected String[] share = {};
+    protected ItemStack newBlade = ItemStack.EMPTY;
     protected ItemStack previousBlade = ItemStack.EMPTY;
 
     public Recipe() {
@@ -19,6 +20,7 @@ public class Recipe {
         this.previousBlade = previousBlade;
     }
 
+    // getters and setters
     public Map<Character, ItemStack> getItemMap() {
         return itemMap;
     }
@@ -33,6 +35,14 @@ public class Recipe {
 
     public void setShare(String[] share) {
         this.share = share;
+    }
+
+    public ItemStack getNewBlade() {
+        return newBlade;
+    }
+
+    public void setNewBlade(ItemStack newBlade) {
+        this.newBlade = newBlade;
     }
 
     public ItemStack getPreviousBlade() {

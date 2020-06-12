@@ -1,4 +1,4 @@
-package com.example.SBE.blade;
+package com.example.SBE.blade.nihil;
 
 import com.example.SBE.Blade;
 import com.example.SBE.EnchantmentEffect;
@@ -13,17 +13,13 @@ public class Nihil extends Blade {
         super();
         this.setName("nihil");
         this.setMaxDamage(45);
-        this.setDefaultBewitched(true);
         this.setBaseAttackModifier(10.0F);
         this.setTexture("nihil/nihil");
         this.setModel("nihil/nihil");
         this.setSpecialAttackType(2);
         this.setStandbyRenderType(1);
-        List<EnchantmentEffect> enchantmentEffects = new ArrayList<>();
-        enchantmentEffects.add(new EnchantmentEffect(Enchantments.UNBREAKING, 10));
-        enchantmentEffects.add(new EnchantmentEffect(Enchantments.SHARPNESS, 10));
-        this.setEnchantmentEffects(enchantmentEffects);
+        this.addEnchantment(Enchantments.UNBREAKING, 3);
+        this.addEnchantment(Enchantments.SHARPNESS, 3);
         this.setDefaultBewitched(true);
-        this.setRecipe(new NihilRecipe());
     }
 }

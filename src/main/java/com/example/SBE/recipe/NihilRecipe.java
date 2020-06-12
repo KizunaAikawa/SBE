@@ -9,6 +9,7 @@ public class NihilRecipe extends Recipe {
         super();
         ItemStack sphere = SlashBlade.findItemStack("flammpfeil.slashblade", "sphere_bladesoul", 1);
         ItemStack ingot = SlashBlade.findItemStack("flammpfeil.slashblade", "ingot_bladesoul", 1);
+        this.newBlade = SlashBlade.getCustomBlade("flammpfeil.slashblade.named.nihil");
         this.previousBlade = new ItemStack(SlashBlade.weapon);
         this.itemMap.put('S', sphere);
         this.itemMap.put('I', ingot);

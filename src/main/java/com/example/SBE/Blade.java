@@ -1,5 +1,8 @@
 package com.example.SBE;
 
+import net.minecraft.enchantment.Enchantment;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Blade {
@@ -10,9 +13,8 @@ public class Blade {
     private String model;
     private Integer specialAttackType;
     private Integer standbyRenderType;
-    private List<EnchantmentEffect> enchantmentEffects;
+    private List<EnchantmentEffect> enchantmentEffects = new ArrayList<>();
     private Boolean isDefaultBewitched;
-    private Recipe recipe;
 
     public Blade(String name, Integer maxDamage, Float baseAttackModifier, String texture, String model, Integer specialAttackType, Integer standbyRenderType, List<EnchantmentEffect> enchantmentEffects, Boolean isDefaultBewitched) {
         this.name += name;
@@ -29,6 +31,11 @@ public class Blade {
     public Blade() {
     }
 
+    public void addEnchantment(Enchantment enchantment, int level) {
+        this.enchantmentEffects.add(new EnchantmentEffect(enchantment, level));
+    }
+
+    //getters and setters
     public String getName() {
         return name;
     }
@@ -99,13 +106,5 @@ public class Blade {
 
     public void setDefaultBewitched(Boolean defaultBewitched) {
         isDefaultBewitched = defaultBewitched;
-    }
-
-    public Recipe getRecipe() {
-        return recipe;
-    }
-
-    public void setRecipe(Recipe recipe) {
-        this.recipe = recipe;
     }
 }
